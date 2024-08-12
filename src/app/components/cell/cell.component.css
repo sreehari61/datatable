@@ -1,0 +1,21 @@
+.cell{
+  padding: 5px 10px;
+  border: 1px solid gray;
+  cursor: default;
+}
+
+.cell:has(input){
+  padding: 0px;
+  border: none;
+}
+
+.cell input, .cell input:focus{
+  width: 100%;
+  border: 1px solid green;
+  outline: none;
+  padding: 0px;
+}
+
+.cell input:focus .cell{
+  border: 1px solid green;
+}

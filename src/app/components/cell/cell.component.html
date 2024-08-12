@@ -1,0 +1,59 @@
+<div class="cell">
+  <span class="cell-text" *ngIf="!colDef.editable">
+    <ng-container *ngIf="colDef.cellRenderer; then withCellRederer else withOutCellRederer"></ng-container>
+  </span>
+  <span *ngIf="colDef.editable">
+    <app-cellinput
+      [colDef]="colDef"
+      [data]="rowData"
+      [enableEdit]="colDef.editable ?? false"
+      (cellFocused) = "onCellFocused($event)"
+    ></app-cellinput>
+  </span>
+</div>
+
+<ng-template #withCellRederer>
+  <ng-container #cellRederer></ng-container>
+</ng-template>
+
+
+<ng-template #withOutCellRederer>
+  <ng-container *ngIf="colDef.valueGetter; then withGetter else normalValue"></ng-container>
+</ng-template>
+
+
+
+<ng-template #normalValue>
+  <ng-container *ngIf="colDef.toolTipValueGetter; then valueTooltipGetter else value"></ng-container>
+</ng-template>
+
+<ng-template #withGetter>
+  <ng-container *ngIf="colDef.toolTipValueGetter; then valueGetterToolTipGetter else valueGetter"></ng-container>
+</ng-template>
+
+
+
+
+<ng-template #value>
+    <span [title]="getTooltipValue()">
+      {{getValue()}}
+    </span>
+</ng-template>
+
+<ng-template #valueTooltipGetter>
+    <span [title]="getTooltipValue()" *ngIf="colDef.toolTipValueGetter">
+      {{getValue()}}
+    </span>
+</ng-template>
+
+<ng-template #valueGetter>
+      <span [title]="getTooltipValue()" *ngIf="colDef.valueGetter">
+      {{ getValue() }}
+    </span>
+</ng-template>
+
+<ng-template #valueGetterToolTipGetter>
+  <span [title]="getTooltipValue()" *ngIf="colDef.valueGetter && colDef.toolTipValueGetter">
+      {{ getValue() }}
+    </span>
+</ng-template>

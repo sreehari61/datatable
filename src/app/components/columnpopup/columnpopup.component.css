@@ -1,0 +1,30 @@
+.column-selection-container{
+  padding: 10px;
+}
+
+.search{
+  display: flex;
+  border-bottom: 1px solid gray;
+  padding-bottom: 8px;
+  align-items: center;
+}
+
+.column-selection-options{
+  margin-top:10px;
+}
+
+.column-selection{
+  display: flex;
+  /*gap:3px;*/
+  align-items: center;
+
+}
+
+input[type="checkbox"]{
+  width: 15px;
+  height: 15px;
+}
+
+input[type="text"]{
+  padding: 3px 0px;
+}

@@ -1,0 +1,12 @@
+<div class="column-selection-container" appOutSideClick (clickOutside)="clickedOutside($event)">
+  <div class="search">
+    <input type="checkbox" [ngModel]="isAllChecked" (ngModelChange)="onAllCheckBoxChecked($event)">
+    <input type="text" name="" id="">
+  </div>
+  <div class="column-selection-options">
+    <div class="column-selection" *ngFor="let coldef of colDefs">
+      <input type="checkbox" [ngModel]="!coldef.hide" (ngModelChange)="onCheckBoxChange($event, coldef)">
+      <span>{{coldef.headerName}}</span>
+    </div>
+  </div>
+</div>

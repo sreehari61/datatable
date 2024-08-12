@@ -1,0 +1,13 @@
+.cell-input input{
+  padding: 5px 10px;
+  border: 1px solid gray;
+  color: #323232;
+  cursor: default;
+  width: calc(100% - 20px);
+}
+
+.cell-input input:focus{
+  /*outline: none;*/
+  border: 1px solid black;
+  cursor: auto;
+}

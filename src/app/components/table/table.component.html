@@ -1,0 +1,48 @@
+<div class="table-container">
+  <div class="main" *ngFor="let colDef of columnDefs; index as i">
+      <div class="table" *ngIf="!colDef.hide" mwlResizable
+           [enableGhostResize]="true" >
+        <div class="table-header" >
+          <div class="column"  mwlResizeHandle
+               [resizeEdges]="{ left: true }">
+            <div class="column-header" >
+              <div class="column-name">
+                <span class="title" [title]="colDef.headerName"> {{ colDef.headerName }} </span>
+                <span class="sort-icon" *ngIf="sort">
+                  <fa-icon [icon]="faArrowsUpDown" *ngIf="colDef.sortType === SortType.NONE || !colDef.sortType" (click)="onSortClick(colDef, colDef.field)"></fa-icon>
+                  <fa-icon [icon]="faArrowUp" *ngIf="colDef.sortType === SortType.ASC" (click)="onSortClick(colDef, colDef.field)"></fa-icon>
+                  <fa-icon [icon]="faArrowDown" *ngIf="colDef.sortType === SortType.DESC" (click)="onSortClick(colDef, colDef.field)"></fa-icon>
+                </span>
+              </div>
+              <div class="menu">
+                <fa-icon [icon]="faBars" (click)="onShowColumnSelection($event)"></fa-icon>
+              </div>
+            </div>
+            <div class="column-search">
+              <input type="text" (input)="onSearch($event, colDef.field)">
+            </div>
+          </div>
+        </div>
+        <div class="table-body-container">
+          <div class="table-body">
+            <div class="table-row" *ngFor="let row of rowData; index as i">
+              <app-cell
+                [colDef]="colDef"
+                [rowData]="row"
+                [index]="i"
+                (cellEditingStartedEvent)="onCellEditingStarted($event)"
+                (cellEditingStoppedEvent)="onCellEditingStopped($event)"
+              ></app-cell>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <div class="column-popup" [ngStyle]="{'top':columnSelectPopupY, 'left': columnSelectPopupX}" *ngIf="showColumnSelection">
+    <app-columnpopup
+      [colDefs]="columnDefs"
+      [showPopup]="showColumnSelection"
+      (displayColumnPopup)="clickedOutside($event)"
+    ></app-columnpopup>
+  </div>
+</div>

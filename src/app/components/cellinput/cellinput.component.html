@@ -1,0 +1,3 @@
+<div class="cell-input" [title]="data[colDef.tooltipField]">
+  <input type="text" (focusin)="onCellFocusIn()" (focusout)="onCellFocusOut()" [disabled]="!enableEdit" [(ngModel)]="data[colDef.field]">
+</div>
