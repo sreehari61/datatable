@@ -1,0 +1,4 @@
+Worked as Java developer in life insurance project of Bajaj Allianz ( BALIC)   in Infosys for 2 years
+BALIC is the project deals with commissions, bonus calcualtion on policies of agents.
+I worked using spring boot, spring tool suite for backend using Java, for front JSP has been used.
+I worked on SQL  to create store procedures for process of data
